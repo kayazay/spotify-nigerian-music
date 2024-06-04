@@ -29,15 +29,21 @@ def spotipyAuthenticator():
     return spotipy.Spotify(auth=access_token)
 playlist = cfg['spotipy.client']['uri']
 
+import datetime, json, re
+
 # AUTHENTICATE TO LYRICS OVH APP
 def ovh(artist, track):
     response = requests.get(
         url = f'https://api.lyrics.ovh/v1/{artist}/{track}',
-        headers = {'Content-Type': 'application/json'}
+        headers = {'Content-Type': 'application/json'},
+        timeout=90,
     )
-    content = response.content
-    decoded = str(content, encoding="utf-8")
-    lyrics = decoded.split('"')[-2].split(r'\r\n')[-1]
-    whtspc = lyrics.replace(r'\n\n',r'\n')
-    tokenized = whtspc.split(r'\n')
-    return tokenized
+    if response.status_code==200:
+        content = response.content
+        jsonLyrics = json.loads(content)
+        lyrics = jsonLyrics['lyrics']
+        #whtspaced_lyrics = decoded.split(':')[-1]
+        tokenized_lyrics = re.split("[\n|\r]+", lyrics)
+        return tokenized_lyrics[1:]
+    else:
+        return None
