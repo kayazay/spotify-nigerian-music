@@ -6,4 +6,6 @@
 +
 + 2024week1feb.csv signifies data scraped in `february`, on the `6th` week of the year `2024`
 
-Every csv has the same fields in the same order, and below is a description of each:
+## Data Dictionary
+
+
