@@ -1,10 +1,10 @@
 # Batch CSV Dump of Spotify Data
 
-Each time the scraper runs, a dataframe containing all the retrieved tracks is dumped in this directory and then uploaded to the Kaggle dataset. The files are named in a way that makes it easy to determine the date of the dump at a glance.
+Each time the scraper runs, a dataframe containing all the retrieved tracks is dumped in this directory and then uploaded to the Kaggle dataset. The files are named in a way that makes it easy to determine the date of the dump at a glance. For example:
 
-For example:
++ `2024week1feb.csv` indicates that the data was scraped in **february**, during the **6th** week of the year **2024**.
 
-+ 2024week1feb.csv indicates that the data was scraped in February, during the 6th week of the year 2024.
+<img src = "https://github.com/kayazay/spotify-nigerian-music/assets/60517587/7d1683c7-9eac-4d07-8ed2-1be4569ecece" width=50% height=20%/>
 
 ## Data Dictionary
 
@@ -25,11 +25,11 @@ For example:
 | `artist` | full name of artist | *string* |
 | `genres` | list of genres associated with artist | *list* |
 | `artist_popularity` | popularity rating of artist from 0-100 | *integer* |
-| `danceability` | danceaility of track () | *integer* |
-| `instrumentalness` | instrumentalness of track () | *integer* |
-| `speechiness` | speechiness of track () | *integer* |
-| `valence` | valence of track () | *integer* |
-| `loudness` | loudness of track () | *integer* |
+| `danceability` | danceability of track| *integer* |
+| `instrumentalness` | instrumentalness of track | *integer* |
+| `speechiness` | speechiness of track | *integer* |
+| `valence` | valence of track | *integer* |
+| `loudness` | loudness of track | *integer* |
 | `added_at` | date playlist was last updated | *date* |
 | `lyrics` | tokenized lyrics; each line = item in list | *list* |
 
