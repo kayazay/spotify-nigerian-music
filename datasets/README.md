@@ -4,8 +4,6 @@ Each time the scraper runs, a dataframe containing all the retrieved tracks is d
 
 + `2024week1feb.csv` indicates that the data was scraped in **february**, during the **6th** week of the year **2024**.
 
-<img src = "https://github.com/kayazay/spotify-nigerian-music/assets/60517587/7d1683c7-9eac-4d07-8ed2-1be4569ecece" width=50% height=20%/>
-
 ## Data Dictionary
 
 | **Column Name** | **Descrption** | **Data Type** |
