@@ -10,7 +10,7 @@ The scraper unit of this project does the following:
 
 ## Requirements
 + Python 3.x
-+ Libraries contained in `req.txt`
++ Libraries contained in `requirements.txt`
 + Credentials contained in `env.cfg`
 ```ini
 [spotipy.client]
