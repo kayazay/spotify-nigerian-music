@@ -1,8 +1,10 @@
 # Batch CSV Dump of Spotify Data
 
-Each time the scraper runs, a dataframe containing all the retrieved tracks is dumped in this directory and then uploaded to the Kaggle dataset. The files are named in a way that makes it easy to determine the date of the dump at a glance. For example:
+Each time the scraper runs, a dataframe containing all the retrieved tracks is dumped in this directory and then uploaded to a **[Kaggle dataset](https://www.kaggle.com/datasets/kemdudebobo/nigerian-spotify-music)**. The files are named in a way that makes it easy to determine the date of the dump at a glance.
 
 + `2024week1feb.csv` indicates that the data was scraped in **february**, during the **6th** week of the year **2024**.
+
+This standardization of data outputs makes it easier for easy ingestion into a semi-relational database, upon which models can be built.
 
 ## Data Dictionary
 
@@ -33,12 +35,18 @@ Each time the scraper runs, a dataframe containing all the retrieved tracks is d
 
 ## Usage
 
-All CSV files are standardized to have the same structure and file names, allowing them to be ingested into a semi-relational database, upon which models can be built.
+The credentials needed to authenticate into Kaggle is contained in `kaggle.json` file.
+```json
+{
+    "username": "kemdudebobo",
+    "key": "65e7569fa0af192a09af81129058faf3"
+}
+```
 
 ## Licensing
 
-These datasets were gotten from the Spotify Web API and therefore are licensed under the [Spotify Developer Terms](https://developer.spotify.com/terms).
+These datasets were gotten from the Spotify Web API and therefore are licensed under the **[Spotify Developer Terms](https://developer.spotify.com/terms)**.
 
 ---
 
-<p>&copy; 2022 Kingsley Izima</p>
+<p>&copy; 2024 Kingsley Izima</p>

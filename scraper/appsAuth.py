@@ -1,7 +1,6 @@
 import configparser
-import os
-import base64
-import requests
+import base64, requests
+import json, re
 import spotipy
 
 cfg = configparser.ConfigParser()
@@ -28,8 +27,6 @@ def spotipyAuthenticator():
         exit()
     return spotipy.Spotify(auth=access_token)
 playlist = cfg['spotipy.client']['uri']
-
-import datetime, json, re
 
 # AUTHENTICATE TO LYRICS OVH APP
 def ovh(artist, track):

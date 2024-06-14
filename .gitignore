@@ -1,3 +1,4 @@
 .*/
+*.csv
 *.cfg
-*/kaggle*
+*kaggle*

@@ -29,4 +29,8 @@ uri = your_spotify_playlist_url
     + `fileNameGiver:` Generates a file name for the CSV based on the scrape date
 
 ## Licensing
-This project is licensed under the [Apache License](https://www.apache.org/licenses/LICENSE-2.0).
+This project is licensed under the **[Apache License](https://www.apache.org/licenses/LICENSE-2.0)**.
+
+---
+
+<p>&copy; 2024 Kingsley Izima</p>

@@ -22,4 +22,8 @@ git push -u origin main
 ```
 
 ## Licensing
-This project is licensed under the [Apache License](https://www.apache.org/licenses/LICENSE-2.0).
+This project is licensed under the **[Apache License](https://www.apache.org/licenses/LICENSE-2.0)**.
+
+---
+
+<p>&copy; 2024 Kingsley Izima</p>
