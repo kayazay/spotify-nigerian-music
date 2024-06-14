@@ -2,6 +2,8 @@
 
 This repository contains scripts for scraping tracks from a Spotify playlist and managing datasets using Docker containers. The project consists of two main components: the scraper and the dataset manager.
 
+<img src = "https://github.com/kayazay/spotify-nigerian-music/assets/60517587/7d1683c7-9eac-4d07-8ed2-1be4569ecece" width=70% height=40%/>
+
 ## Repository Structure
 + **dataset/:** Contains dataset files, metadata, kaggle credentials, and Dockerfile
 + **scraper/:** Contains scraping script, python requirements, credentials and Dockerfile
