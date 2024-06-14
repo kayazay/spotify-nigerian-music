@@ -27,3 +27,6 @@ uri = your_spotify_playlist_url
     + `tracksFromPlaylist:` Scrapes tracks from the playlist and retrieves recommendations
     + `detailsFromTracks:` Collects detailed information from each track
     + `fileNameGiver:` Generates a file name for the CSV based on the scrape date
+
+## Licensing
+This project is licensed under the [Apache License](https://www.apache.org/licenses/LICENSE-2.0).
