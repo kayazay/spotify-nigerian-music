@@ -93,5 +93,5 @@ if __name__=='__main__':
     T4rmP = tracksFromPlaylist()
     D4rmT = detailsFromTracks(allTracks=T4rmP)
     file = fileNameGiver()
-    pandas.DataFrame(D4rmT).to_csv(file, index=False)
-    print(f"thanks!\ndumped data to parquet&csv successfully\nbye now!!")
+    #pandas.DataFrame(D4rmT).to_csv(file, index=False)
+    print(f"thanks!\ndumped data to csv successfully\nbye now!!")

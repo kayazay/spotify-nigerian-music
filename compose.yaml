@@ -1,0 +1,13 @@
+services:
+  # 1. run scraper and output result
+  scraper_service:
+    build: ./scraper
+    container_name: scraper_cntr
+    volumes:
+      - ./datasets:/app/datasets
+  # 2. upload result to kaggle
+  kaggle_service:
+    build: ./datasets
+    container_name: kaggle_cntr
+    depends_on:
+      - scraper_service
