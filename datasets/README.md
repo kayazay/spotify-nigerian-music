@@ -2,7 +2,7 @@
 
 Each time the scraper runs, a dataframe containing all the retrieved tracks is dumped in this directory and then uploaded to a **[Kaggle dataset](https://www.kaggle.com/datasets/kemdudebobo/nigerian-spotify-music)**. The files are named in a way that makes it easy to determine the date of the dump at a glance.
 
-+ `2024week1feb.csv` indicates that the data was scraped in **february**, during the **6th** week of the year **2024**.
++ `2024week6feb.csv` indicates that the data was scraped in **february**, during the **6th** week of the year **2024**.
 
 This standardization of data outputs makes it easier for easy ingestion into a semi-relational database, upon which models can be built.
 
