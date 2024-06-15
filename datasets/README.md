@@ -38,8 +38,8 @@ This standardization of data outputs makes for an easier ingestion into a semi-r
 The credentials needed to authenticate into Kaggle is contained in `kaggle.json` file.
 ```json
 {
-    "username": "kemdudebobo",
-    "key": "65e7569fa0af192a09af81129058faf3"
+    "username": "your_kaggle_username",
+    "key": "your_kaggle_key"
 }
 ```
 
