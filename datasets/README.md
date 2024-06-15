@@ -4,7 +4,7 @@ Each time the scraper runs, a dataframe containing all the retrieved tracks is d
 
 + `2024week6feb.csv` indicates that the data was scraped in **february**, during the **6th** week of the year **2024**.
 
-This standardization of data outputs makes it easier for easy ingestion into a semi-relational database, upon which models can be built.
+This standardization of data outputs makes for an easier ingestion into a semi-relational database, upon which models can be built.
 
 ## Data Dictionary
 
