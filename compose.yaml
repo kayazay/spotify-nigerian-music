@@ -10,4 +10,5 @@ services:
     build: datasets
     container_name: kaggle_cntr
     depends_on:
-      - scraper_service
+      scraper_service:
+        condition: service_completed_successfully
