@@ -6,5 +6,4 @@ COPY *.csv *.md dataset-metadata.json ./
 
 RUN pip3 install kaggle==1.6.14
 
-CMD bash
-#kaggle datasets version -m "weekly upload of spotify music"
+CMD kaggle datasets version -m "weekly upload of spotify music"

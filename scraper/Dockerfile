@@ -8,5 +8,4 @@ COPY . .
 
 RUN pip install --upgrade -r requirements.txt
 
-CMD bash
-#python3 script.py
+CMD python3 script.py
