@@ -96,6 +96,6 @@ if __name__=='__main__':
     pandas.DataFrame(D4rmT).to_csv(file, index=False)
     print(f"thanks!\ndumped data to csv successfully\nbye now!!")
     '''
-    for i in 100000:
+    for i in range(100000):
         print(i)
     
