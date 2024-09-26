@@ -2,12 +2,12 @@ import appsAuth as aA
 from datetime import datetime as dt
 import time
 import pandas
-sp = aA.spotipyAuthenticator()
 date_scraped = None
 
 # SCRAPE TRACKS FROM PLAYLIST
 def tracksFromPlaylist(counter=1, finalTracks=[]):
     print('first entry into playlist, getting items now')
+    sp = aA.spotipyAuthenticator()
     playlistJson = sp.playlist_tracks(aA.playlist)
     global date_scraped
     while playlistJson:
@@ -45,9 +45,10 @@ def tracksFromPlaylist(counter=1, finalTracks=[]):
 def detailsFromTracks(allTracks, counter=1, listx=[]):
     print('collecting details from each track, be patient')
     for track_id in allTracks:
+        sp2 = aA.spotipyAuthenticator()
         dictx = {}
         # get regular details of track
-        detail = sp.track(track_id)
+        detail = sp2.track(track_id)
         dictx['tid'] = detail['id']
         dictx['track'] = detail['name']
         dictx['track_url'] = detail['external_urls']['spotify']
@@ -61,12 +62,12 @@ def detailsFromTracks(allTracks, counter=1, listx=[]):
         dictx['album_type'] = detail['album']['album_type']
         # get genre and other info from artist
         dictx['artid'] = detail['artists'][0]['id']
-        artist_f = sp.artist(dictx['artid'])
+        artist_f = sp2.artist(dictx['artid'])
         dictx['artist'] = artist_f['name']
         dictx['genres'] = artist_f['genres']
         dictx['artist_popularity'] = artist_f['popularity']
         # get audio features of track
-        audio_f = sp.audio_features(tracks=[track_id])[0]
+        audio_f = sp2.audio_features(tracks=[track_id])[0]
         dictx['danceability'] = audio_f['danceability']
         dictx['instrumentalness'] = audio_f['instrumentalness']
         dictx['speechiness'] = audio_f['speechiness']
