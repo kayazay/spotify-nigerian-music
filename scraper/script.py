@@ -44,8 +44,8 @@ def tracksFromPlaylist(counter=1, finalTracks=[]):
 # COMBINE ALL TRACKS GOTTEN AND GET DETAILS
 def detailsFromTracks(allTracks, counter=1, listx=[]):
     print('collecting details from each track, be patient')
+    sp2 = aA.spotipyAuthenticator()
     for track_id in allTracks:
-        sp2 = aA.spotipyAuthenticator()
         dictx = {}
         # get regular details of track
         detail = sp2.track(track_id)
