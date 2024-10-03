@@ -10,5 +10,4 @@ RUN pip install --upgrade -r requirements.txt
 WORKDIR /app
 COPY . .
 
-CMD ["bash"]
-#["python3", "script.py"]
+CMD ["python3", "script.py"]
