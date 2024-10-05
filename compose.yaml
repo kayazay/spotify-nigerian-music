@@ -12,3 +12,4 @@ services:
     depends_on:
       scraper_service:
         condition: service_completed_successfully
+  
