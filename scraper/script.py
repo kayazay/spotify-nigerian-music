@@ -77,6 +77,6 @@ if __name__=='__main__':
     D4rmT = detailsFromTracks(T4rmP)
     file = fileNameGiver()
     pandas.DataFrame(D4rmT).to_csv(file, index=False)
-    print(f"thanks!\ndumped data to csv successfully\nbye now!!")
+    print(f"thanks!\ndumped data to {file} successfully\nbye now!!")
 
 # end
