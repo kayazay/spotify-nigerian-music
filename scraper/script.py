@@ -15,7 +15,7 @@ def tracksFromPlaylist(counter=1, finalTracks=[]):
     global date_scraped
     while playlistJson:
         # iterate over each item in the playlist
-        for item in playlistJson.get('items')[:1]:
+        for item in playlistJson.get('items'):
             added_at = item.get('added_at').split('T')[0]
             date_scraped = dt.strptime(added_at, r'%Y-%m-%d')
             track = item.get('track')
