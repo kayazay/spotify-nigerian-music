@@ -33,7 +33,7 @@ def tracksFromPlaylist(counter=1, finalTracks=[]):
                 deetTracks.append(recommended.get('id'))
             if counter % 10 == 0:
                 time.sleep(15)
-                print(f'...track {counter} scraped with {len(deetTracks)} total')
+                #rint(f'...track {counter} scraped with {len(deetTracks)} total')
             counter += 1
             finalTracks += deetTracks
         # obtain next paginated results after scraping
@@ -56,9 +56,9 @@ def detailsFromTracks(allTracks, counter=1, listx=[]):
         # merge all three dictionary together
         finaldict = sptfyOp.finaldict
         finaldict['added_at'] = date_scraped
-        print(f"{finaldict['track']} scraped with details and progress is {counter}")
+        #rint(f"{finaldict['track']} scraped with details and progress is {counter}")
         if counter % 25 == 0:
-            print('...sleeping for 10 seconds now')
+            #rint('...sleeping for 10 seconds now')
             time.sleep(10)
         listx.append(finaldict)
         counter += 1
@@ -77,6 +77,5 @@ if __name__=='__main__':
     D4rmT = detailsFromTracks(T4rmP)
     file = fileNameGiver()
     pandas.DataFrame(D4rmT).to_csv(file, index=False)
-    print(f"thanks!\ndumped data to {file} successfully\nbye now!!")
+    print(f"thanks!\ndumped {len(D4rmT)} to {file} successfully\nbye now!!")
 
-# end
