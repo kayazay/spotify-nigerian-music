@@ -5,6 +5,7 @@ services:
     container_name: scraper_cntr
     volumes:
       - ./datasets:/app/datasets
+      - ~/init/.env:/app/.env
   # 2. upload result to kaggle
   kaggle_service:
     build: datasets

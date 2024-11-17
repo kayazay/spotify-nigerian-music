@@ -1,66 +1,40 @@
-import json, re, requests, configparser
+import json, re, requests, os, dotenv
 from spotipy.oauth2 import SpotifyClientCredentials
 from spotipy import Spotify
+dotenv.load_dotenv()
 
-cfg = configparser.ConfigParser()
-cfg.read('env.cfg')
+class CustomSpotify(Spotify):
 
-class SpotifyOperation:
-    
-    playlist = cfg['spotipy.client']['uri']
-    
     def __init__(self):
-        CLIENT_ID = cfg['spotipy.client']['id']
-        CLIENT_SECRET = cfg['spotipy.client']['secret']
-        AUTH = SpotifyClientCredentials(client_id= CLIENT_ID, client_secret= CLIENT_SECRET)
-        self.sptfy = Spotify(auth_manager=AUTH, retries=3,requests_timeout=30)
-        self.track_id = None
-        self.finaldict = {}
-        
-    def gettrackid(self, track_id):
-        self.track_id = track_id
+        _clientid = os.getenv('spotipy.client.id')
+        _clientsecret = os.getenv('spotipy.client.secret')
+        _auth_manager = SpotifyClientCredentials(_clientid, _clientsecret)
+        super().__init__(client_credentials_manager=_auth_manager, retries=3, requests_timeout=30)
+        self.artistobj = self.audioobj = None
 
-    def track(self, dict = {}):
-        detail = self.sptfy.track(self.track_id)
-        dict['tid'] = detail['id']
-        dict['track'] = detail['name']
-        dict['track_url'] = detail['external_urls']['spotify']
-        dict['release_date'] = detail['album']['release_date']
-        dict['duration_ms'] = detail['duration_ms']
-        dict['explicit'] = detail['explicit']
-        dict['track_popularity'] = detail['popularity']
-        dict['markets'] = len(detail['available_markets'])
-        dict['albid'] = detail['album']['id']
-        dict['album'] = detail['album']['name']
-        dict['album_type'] = detail['album']['album_type']
-        dict['artid'] = detail['artists'][0]['id']
-        dict['artist'] = detail['artists'][0]['name']
-        # features of spotify track
-        self.finaldict = {**self.finaldict, **dict}
-    
-    def artist(self, dict={}):
-        print('waiting for artist')
-        artid = self.finaldict['artid']
-        print('artist gotten')
-        artist = self.sptfy.artist(artid)
-        dict['artist'] = artist['name']
-        dict['genres'] = artist['genres']
-        dict['artist_popularity'] = artist['popularity']
-        # features of spotify artist
-        self.finaldict = {**self.finaldict, **dict}
-    
-    def audio(self, dict={}):
-        audio = self.sptfy.audio_features(tracks=[self.track_id])[0]
-        dict['danceability'] = audio['danceability']
-        dict['instrumentalness'] = audio['instrumentalness']
-        dict['speechiness'] = audio['speechiness']
-        dict['valence'] = audio['valence']
-        dict['loudness'] = audio['loudness']
-        # audio features of spotify track
-        self.finaldict = {**self.finaldict, **dict}
-    
-    def api4ovh(self):
-        names = (self.finaldict['artist'], self.finaldict['track'])
+    def playlist_tracks(self):
+        _playlist = os.getenv('spotipy.uri')
+        playlistjson = super().playlist_tracks(_playlist, limit=100)
+        return playlistjson.get('items')
+
+    def track(self, track_id):
+        trackobj = super().track(track_id)
+        artist_id = trackobj['artists'][0]['id']
+        artistobj = super().artist(artist_id)
+        audioobj =  super().audio_features([track_id])[0]
+        return trackobj, artistobj, audioobj
+
+    def recommendations(self, gettrack, getartist):
+        tracks = [gettrack]
+        genres = ['afrobeats','nigerian pop']
+        artists = [artist.get('id') for artist in getartist]
+        recommendeds = super().recommendations(
+            seed_genres=genres, seed_artists=artists[:2], seed_tracks=tracks,limit=5
+        )
+        return recommendeds.get('tracks')
+
+    def lyrics(self):
+        names = (self.artist, self.track)
         '''print('waiting for lyrics')
         response = requests.get(
             url = f'https://api.lyrics.ovh/v1/{names[0]}/{names[1]}',
@@ -71,32 +45,6 @@ class SpotifyOperation:
         if response.status_code==200:
             jsonlyrics = json.loads(response.content)
             tklyrics = re.split("[\n|\r]+", jsonlyrics['lyrics'])
-            tklyrics = tklyrics[1:]'''
-        self.finaldict['lyrics'] = None
+            tklyrics = tklyrics[1:]
+        self.lyrics = None'''
 
-
-class SpotifyPlaylistJobs:
-
-    playlist = cfg['spotipy.client']['uri']
-    
-    def __init__(self):
-        CLIENT_ID = cfg['spotipy.client']['id']
-        CLIENT_SECRET = cfg['spotipy.client']['secret']
-        AUTH = SpotifyClientCredentials(client_id= CLIENT_ID, client_secret= CLIENT_SECRET)
-        self.sptfy = Spotify(auth_manager=AUTH, retries=3,requests_timeout=30)
-        self.track_id = None
-        self.finaldict = {}    
-
-    def playlist_tracks(self):
-        return self.sptfy.playlist_tracks(SpotifyOperation.playlist)
-
-    def recommendations(self, ARTISTS, TRACKS, GENRES, LIMIT):
-        return self.sptfy.recommendations(
-            seed_genres=GENRES,
-            seed_artists=ARTISTS,
-            seed_tracks=TRACKS,
-            limit=LIMIT
-        )
-
-    def next(self, playlistJson):
-        return self.sptfy.next(playlistJson)
