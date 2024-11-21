@@ -14,7 +14,6 @@ for item in plItems:
         tracks_pl_rcm.add(recommended.get('id'))
         tracks_pl_rcm.add(gettrack)
     time.sleep(5.0)
-    break
 
 # COMBINE ALL TRACKS GOTTEN AND GET DETAILS
 final_spotify_data, added_at, cs = [], dt.now().date(), CustomSpotify()
