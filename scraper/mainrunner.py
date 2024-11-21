@@ -30,4 +30,4 @@ for count, tid in enumerate(tracks_pl_rcm):
 f = f"./datasets/{added_at.year}week{added_at.isocalendar().week}{added_at.strftime('%b')}.csv"
 df = pandas.DataFrame(final_spotify_data)
 df.to_csv(f.lower(), index=False)
-print(f"dumped {len(final_spotify_data)} tracks to {f} successfully\nbye now!!")
+print(f"dumped {len(final_spotify_data)} tracks to {f} successfully.")
