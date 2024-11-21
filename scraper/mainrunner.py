@@ -1,5 +1,5 @@
-from appsAuth import CustomSpotify
-from dc import SpotifyData
+from spotifycustom import CustomSpotify
+from spotifydataclass import SpotifyData
 from datetime import datetime as dt
 import time, pandas
 
