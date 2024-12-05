@@ -9,4 +9,4 @@ RUN pip install --upgrade -r requirements.txt
 WORKDIR /app
 COPY . .
 
-CMD ["python3", "mainrunner.py"]
+CMD ["python3", "spotifycustom.py"]
