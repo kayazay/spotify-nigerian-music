@@ -7,7 +7,9 @@ class CustomSpotify(Spotify):
 
     def __init__(self):
         _clientid = os.getenv('spotipy.client.id')
+        _clientid = 'c4e921b7dfe34541a5af84f9e8e3bd8f'
         _clientsecret = os.getenv('spotipy.client.secret')
+        _clientsecret = '71e7d4fe9bc34b55910ce9551be2955d'
         _auth_manager = SpotifyClientCredentials(_clientid, _clientsecret)
         super().__init__(auth_manager=_auth_manager, retries=3, requests_timeout=30)
         self.artistobj = self.audioobj = None
@@ -15,7 +17,7 @@ class CustomSpotify(Spotify):
     def playlist(self):
         _playlist = os.getenv('spotipy.uri')
         _playlist='37i9dQZF1DWUf3j9Rl2IUG'
-        playlistjson = super().playlist_tracks(_playlist)#, limit=100)
+        playlistjson = super().playlist(_playlist)#, limit=100)
         return playlistjson.get('items')
 
     def track(self, track_id):
@@ -48,3 +50,6 @@ class CustomSpotify(Spotify):
             tklyrics = re.split("[\n|\r]+", jsonlyrics['lyrics'])
             tklyrics = tklyrics[1:]
         self.lyrics = None'''
+
+x = CustomSpotify()
+print(x.playlist())
